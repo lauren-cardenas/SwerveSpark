@@ -11,13 +11,15 @@ import frc.lib.config.SwerveModuleConstants;
 public final class Constants {
 
   public static final class Swerve {
-    public static final double stickDeadband = 0.1;
+    public static final double stickDeadband = 0.25;
 
-    public static final int pigeonID = 6;
+    public static final int pigeonID = 1;
     public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
 
     /* Drivetrain Constants */
+    //FIXME Center to center distance of left and right module
     public static final double trackWidth = Units.inchesToMeters(21.73);
+    //FIXME Center to center distance of front and rear module wheels in meters
     public static final double wheelBase = Units.inchesToMeters(21.73);
     public static final double wheelDiameter = Units.inchesToMeters(4.0);
     public static final double wheelCircumference = wheelDiameter * Math.PI;
@@ -25,8 +27,8 @@ public final class Constants {
     public static final double openLoopRamp = 0.25;
     public static final double closedLoopRamp = 0.0;
 
-    public static final double driveGearRatio = (6.75 / 1.0); // 6.75:1
-    public static final double angleGearRatio = (12.8 / 1.0); // 12.8:1
+    public static final double driveGearRatio = (6.55 / 1.0); // 6.75:1
+    public static final double angleGearRatio = (10.29 / 1.0); // 12.8:1
 
     public static final SwerveDriveKinematics swerveKinematics =
         new SwerveDriveKinematics(
@@ -43,7 +45,7 @@ public final class Constants {
     public static final int driveContinuousCurrentLimit = 80;
 
     /* Angle Motor PID Values */
-    public static final double angleKP = 0.01;
+    public static final double angleKP = 0.3;
     public static final double angleKI = 0.0;
     public static final double angleKD = 0.0;
     public static final double angleKFF = 0.0;
@@ -55,9 +57,10 @@ public final class Constants {
     public static final double driveKFF = 0.0;
 
     /* Drive Motor Characterization Values */
-    public static final double driveKS = 0.667;
-    public static final double driveKV = 2.44;
-    public static final double driveKA = 0.27;
+    //FIXME Robot Characterization.  Divide by 12 to convert from volts to percent output for CTRE
+    public static final double driveKS = 0.16885/12;//.667
+    public static final double driveKV = 2.2225/12;//2.44
+    public static final double driveKA = 0.25375/12;//0.27
 
     /* Drive Motor Conversion Factors */
     public static final double driveConversionPositionFactor =
@@ -75,7 +78,7 @@ public final class Constants {
 
     /* Motor Inverts */
     public static final boolean driveInvert = false;
-    public static final boolean angleInvert = false;
+    public static final boolean angleInvert = true;
 
     /* Angle Encoder Invert */
     public static final boolean canCoderInvert = false;
